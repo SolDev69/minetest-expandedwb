@@ -174,7 +174,7 @@ void MapgenFlatParams::setDefaultSettings(Settings *settings)
 /////////////////////////////////////////////////////////////////
 
 
-int MapgenFlat::getSpawnLevelAtPoint(v2s16 p)
+long long MapgenFlat::getSpawnLevelAtPoint(v2s16 p)
 {
 	s16 stone_level = ground_level;
 	float n_terrain =
@@ -287,14 +287,14 @@ void MapgenFlat::makeChunk(BlockMakeData *data)
 }
 
 
-s16 MapgenFlat::generateTerrain()
+long MapgenFlat::generateTerrain()
 {
 	MapNode n_air(CONTENT_AIR);
 	MapNode n_stone(c_stone);
 	MapNode n_water(c_water_source);
 
 	const v3s16 &em = vm->m_area.getExtent();
-	s16 stone_surface_max_y = -MAX_MAP_GENERATION_LIMIT;
+	long stone_surface_max_y = -MAX_MAP_GENERATION_LIMIT;
 	u32 ni2d = 0;
 
 	bool use_noise = (spflags & MGFLAT_LAKES) || (spflags & MGFLAT_HILLS);
